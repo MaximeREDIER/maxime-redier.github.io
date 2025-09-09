@@ -1,141 +1,153 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio BTS SIO - Accueil</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio – BTS SIO 2ᵉ année</title>
+  <meta name="description" content="Portfolio de BTS SIO – Accueil, projets, compétences et contact." />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f5f7fa;
-      color: #333;
+    :root{
+      --bg: #0b0e14;
+      --bg-soft: #121826;
+      --text: #e6e9ef;
+      --muted: #9aa4b2;
+      --brand: #5b8cff;
+      --brand-2: #9b6bff;
+      --ring: rgba(91, 140, 255, .35);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
+      --grad: linear-gradient(135deg, var(--brand), var(--brand-2));
     }
-    header {
-      background: linear-gradient(135deg, #4e73df, #1cc88a);
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 800px at 70% -10%, rgba(91, 140, 255, .12), transparent 60%),
+                  radial-gradient(1000px 700px at -10% 0%, rgba(155, 107, 255, .12), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      margin-top: 10px;
-      font-size: 1.2rem;
-    }
-    nav {
-      background: #2c3e50;
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    table, th, td {
-      border: 1px solid #ccc;
-    }
-    th, td {
-      padding: 12px;
-      text-align: left;
-    }
-    th {
-      background: #4e73df;
-      color: white;
-    }
-    tr:nth-child(even) {
-      background: #f9f9f9;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #2c3e50;
-      color: white;
-      margin-top: 40px;
-    }
+    a{ color: var(--text); text-decoration: none; }
+    .container{ width: min(1100px, 92%); margin: 0 auto; }
+    header{ position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg-soft) 50%, transparent); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .nav{ display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .logo{ display: inline-flex; align-items: center; gap: 10px; font-weight: 700; }
+    .logo-mark{ width: 34px; height: 34px; border-radius: 12px; background: var(--grad); display: grid; place-items: center; box-shadow: var(--shadow); font-weight: 800; }
+    .menu{ display: flex; gap: 18px; align-items: center; }
+    .menu a{ padding: 8px 12px; border-radius: 12px; transition: background .2s ease; }
+    .menu a:hover{ background: rgba(255,255,255,.06); }
+    .btn{ display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius: 12px; background: var(--grad); box-shadow: var(--shadow); }
+    .hero{ position: relative; padding: 84px 0 72px; }
+    .hero-grid{ display:grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: center; }
+    .chip{ display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border:1px solid rgba(255,255,255,.08); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,.02); }
+    h1{ font-size: clamp(34px, 4vw, 54px); line-height: 1.05; margin: 14px 0 12px; }
+    .lead{ font-size: clamp(16px, 2vw, 20px); color:var(--muted); max-width: 60ch; }
+    .cta{ display:flex; gap:14px; margin-top: 26px; flex-wrap: wrap; }
+    .cta .ghost{ background: rgba(255,255,255,.06); }
+    .hero-card{ background: color-mix(in oklab, var(--bg-soft) 75%, #0b0e14 25%); border:1px solid rgba(255,255,255,.06); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+    .hero-card .rows{ display:grid; gap:12px; }
+    .row{ display:flex; gap:12px; align-items:center; padding:12px; border-radius: 14px; background: rgba(255,255,255,.03); border:1px dashed rgba(255,255,255,.08); }
+    .dot{ width:10px; height:10px; border-radius:50%; background: var(--brand); box-shadow: 0 0 0 6px var(--ring); }
+    section{ padding: 72px 0; }
+    .section-head{ display:flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+    .kicker{ color: var(--muted); letter-spacing: .12em; text-transform: uppercase; font-size: 12px; }
+    .h2{ font-size: clamp(24px, 3vw, 34px); font-weight: 800; margin: 6px 0; }
+    .sub{ color: var(--muted); max-width: 65ch; }
+    table{ width:100%; border-collapse: collapse; margin-top: 20px; }
+    th, td{ border:1px solid rgba(255,255,255,.1); padding:12px 14px; text-align:left; }
+    th{ background: rgba(255,255,255,.06); }
+    tr:nth-child(even){ background: rgba(255,255,255,.03); }
+    footer{ border-top:1px solid rgba(255,255,255,.06); padding: 22px 0 60px; color: var(--muted); }
+    .row-flex{ display:flex; align-items:center; gap: 10px; flex-wrap: wrap; }
+    @media (max-width: 900px){ .hero-grid{ grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
   <header>
-    <h1>Mon Portfolio BTS SIO</h1>
-    <p>Étudiant en 2ᵉ année - Option SLAM / SISR</p>
+    <div class="container nav">
+      <a href="#" class="logo"><span class="logo-mark">SIO</span><span>Portfolio • 2ᵉ année</span></a>
+      <nav class="menu">
+        <a href="#competences">Compétences</a>
+        <a href="#parcours">Parcours</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="#cv" onclick="document.getElementById('cv-link').click(); return false;">📄 CV</a>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <a href="#profil">Profil</a>
-    <a href="#competences">Compétences</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <section id="profil">
-    <h2>Profil</h2>
-    <p>Bienvenue sur mon portfolio. Vous trouverez ici une présentation de mes compétences, mes projets et les preuves associées validant mes acquis dans le cadre du BTS SIO.</p>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="chip">BTS SIO • 2ᵉ année • Option SLAM/SISR</span>
+        <h1>Bonjour, moi c'est <strong>Maxime</strong> 👋<br /><span style="background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;">je crée des applis & systèmes fiables</span></h1>
+        <p class="lead">Étudiant en <strong>BTS SIO</strong>, je conçois des applications web modernes et j'automatise des déploiements avec une approche axée sur la qualité, la sécurité et l'expérience utilisateur.</p>
+        <div class="cta">
+          <a class="btn" href="#competences">Voir mes compétences</a>
+          <a class="btn ghost" href="#contact">Me contacter</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="rows">
+          <div class="row"><span>📍</span><span><strong>Basé en France</strong> — ouvert au full-remote</span></div>
+          <div class="row"><span>🛠️</span><span>Stack: HTML/CSS/JS, PHP/Laravel, MySQL, Docker, Linux</span></div>
+          <div class="row"><span>🏫</span><span><strong>BTS SIO</strong> – 2ᵉ année (SLAM/SISR)</span></div>
+          <div class="row"><span>✅</span><span>Objectif: alternance en développement / DevOps</span></div>
+        </div>
+      </aside>
+    </div>
   </section>
 
+  <!-- ====== Compétences avec tableau ====== -->
   <section id="competences">
-    <h2>Compétences BTS SIO</h2>
-    <table>
-      <tr>
-        <th>Compétence</th>
-        <th>Preuves</th>
-      </tr>
-      <tr>
-        <td>Gérer le patrimoine informatique</td>
-        <td><a href="#">Preuve</a></td>
-      </tr>
-      <tr>
-        <td>Répondre aux incidents et aux demandes d'assistance et d'évolution</td>
-        <td><a href="#">Preuve</a></td>
-      </tr>
-      <tr>
-        <td>Développer la présence en ligne de l'organisation</td>
-        <td><a href="#">Preuve</a></td>
-      </tr>
-      <tr>
-        <td>Travailler en mode projet</td>
-        <td><a href="#">Preuve</a></td>
-      </tr>
-      <tr>
-        <td>Mettre à disposition des utilisateurs un service informatique</td>
-        <td><a href="#">Preuve</a></td>
-      </tr>
-      <tr>
-        <td>Organiser son développement professionnel</td>
-        <td><a href="#">Preuve</a></td>
-      </tr>
-    </table>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Compétences</div>
+          <div class="h2">Tableau des compétences BTS SIO</div>
+        </div>
+        <p class="sub">Liste officielle des compétences avec preuves associées (documents, captures, rapports).</p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Compétence</th>
+            <th>Preuve (document)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gérer le patrimoine informatique</td>
+            <td><a href="preuves/c1.pdf" target="_blank">📄 Voir document</a></td>
+          </tr>
+          <tr>
+            <td>Répondre aux incidents et aux demandes d'assistance et d'évolution</td>
+            <td><a href="preuves/c2.pdf" target="_blank">📄 Voir document</a></td>
+          </tr>
+          <tr>
+            <td>Développer la présence en ligne de l'organisation</td>
+            <td><a href="preuves/c3.pdf" target="_blank">📄 Voir document</a></td>
+          </tr>
+          <tr>
+            <td>Travailler en mode projet</td>
+            <td><a href="preuves/c4.pdf" target="_blank">📄 Voir document</a></td>
+          </tr>
+          <tr>
+            <td>Mettre à disposition des utilisateurs un service informatique</td>
+            <td><a href="preuves/c5.pdf" target="_blank">📄 Voir document</a></td>
+          </tr>
+          <tr>
+            <td>Organiser son développement professionnel</td>
+            <td><a href="preuves/c6.pdf" target="_blank">📄 Voir document</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Vous pouvez me contacter par email : <a href="mailto:prenom.nom@email.com">prenom.nom@email.com</a></p>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 - Mon Portfolio BTS SIO</p>
-  </footer>
-</body>
-</html>
+  <section id="parcours">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Par
