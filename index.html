@@ -1,12 +1,340 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio – BTS SIO 2ᵉ année</title>
+  <meta name="description" content="Portfolio de BTS SIO – Accueil, projets, compétences et contact." />
+  <style>
+    /* ====== Design System ====== */
+    :root{
+      --bg: #0b0e14;            /* fond base */
+      --bg-soft: #121826;        /* cartes */
+      --text: #e6e9ef;          /* texte */
+      --muted: #9aa4b2;         /* texte secondaire */
+      --brand: #5b8cff;         /* accent */
+      --brand-2: #9b6bff;       /* accent 2 */
+      --ring: rgba(91, 140, 255, .35);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
+      --grad: linear-gradient(135deg, var(--brand), var(--brand-2));
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 800px at 70% -10%, rgba(91, 140, 255, .12), transparent 60%),
+                  radial-gradient(1000px 700px at -10% 0%, rgba(155, 107, 255, .12), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a{ color: var(--text); text-decoration: none; }
+    .container{ width: min(1100px, 92%); margin: 0 auto; }
+
+    /* ====== Header / Nav ====== */
+    header{
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(8px);
+      background: color-mix(in oklab, var(--bg-soft) 50%, transparent);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0;
+    }
+    .logo{
+      display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing:.2px;
+    }
+    .logo-mark{
+      width: 34px; height: 34px; border-radius: 12px; background: var(--grad);
+      display: grid; place-items: center; box-shadow: var(--shadow);
+      font-weight: 800;
+    }
+    .nav a{ opacity:.9; }
+    .menu{ display: flex; gap: 18px; align-items: center; }
+    .menu a{ padding: 8px 12px; border-radius: 12px; transition: background .2s ease; }
+    .menu a:hover{ background: rgba(255,255,255,.06); }
+    .btn{ display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius: 12px; background: var(--grad); box-shadow: var(--shadow); }
+
+    /* ====== Hero ====== */
+    .hero{ position: relative; padding: 84px 0 72px; }
+    .hero-grid{ display:grid; grid-template-columns: 1.2fr .8fr; gap: 36px; align-items: center; }
+    .chip{ display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border:1px solid rgba(255,255,255,.08); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,.02); }
+    h1{ font-size: clamp(34px, 4vw, 54px); line-height: 1.05; margin: 14px 0 12px; }
+    .lead{ font-size: clamp(16px, 2vw, 20px); color:var(--muted); max-width: 60ch; }
+    .cta{ display:flex; gap:14px; margin-top: 26px; flex-wrap: wrap; }
+    .cta .ghost{ background: rgba(255,255,255,.06); }
+    .hero-card{
+      background: color-mix(in oklab, var(--bg-soft) 75%, #0b0e14 25%);
+      border:1px solid rgba(255,255,255,.06); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+    }
+    .hero-card .rows{ display:grid; gap:12px; }
+    .row{ display:flex; gap:12px; align-items:center; padding:12px; border-radius: 14px; background: rgba(255,255,255,.03); border:1px dashed rgba(255,255,255,.08); }
+    .dot{ width:10px; height:10px; border-radius:50%; background: var(--brand); box-shadow: 0 0 0 6px var(--ring); }
+
+    /* ====== Sections wrap ====== */
+    section{ padding: 72px 0; }
+    .section-head{ display:flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+    .kicker{ color: var(--muted); letter-spacing: .12em; text-transform: uppercase; font-size: 12px; }
+    .h2{ font-size: clamp(24px, 3vw, 34px); font-weight: 800; margin: 6px 0; }
+    .sub{ color: var(--muted); max-width: 65ch; }
+
+    /* ====== Skills ====== */
+    .grid{ display:grid; gap: 18px; }
+    .grid.skills{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .card{
+      background: color-mix(in oklab, var(--bg-soft) 80%, #0b0e14 20%);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .card:hover{ transform: translateY(-4px); border-color: rgba(255,255,255,.12); }
+    .pill{ display:inline-block; padding:6px 10px; border-radius: 999px; background: rgba(255,255,255,.06); font-size: 12px; color: var(--muted); }
+
+    /* ====== Projects ====== */
+    .grid.projects{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .thumb{ aspect-ratio: 16 / 9; border-radius: 14px; background: linear-gradient(135deg, rgba(91,140,255,.2), rgba(155,107,255,.2)); border:1px solid rgba(255,255,255,.06); display:grid; place-items:center; font-weight:700; letter-spacing:.08em; }
+    .project-title{ margin: 10px 0 6px; font-weight: 700; }
+    .project-meta{ color: var(--muted); font-size: 14px; }
+
+    /* ====== Timeline (Stages) ====== */
+    .timeline{ position: relative; }
+    .timeline::before{ content:""; position:absolute; left: 22px; top:0; bottom:0; width:2px; background: rgba(255,255,255,.08); }
+    .step{ position:relative; padding-left: 64px; margin: 18px 0; }
+    .step .bullet{ position:absolute; left: 14px; top: 6px; width: 18px; height: 18px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 6px var(--ring); }
+
+    /* ====== Contact ====== */
+    .contact-card{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .input{ width: 100%; padding: 12px 14px; border-radius: 12px; border:1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03); color: var(--text); }
+    textarea.input{ min-height: 120px; resize: vertical; }
+
+    /* ====== Footer ====== */
+    footer{ border-top:1px solid rgba(255,255,255,.06); padding: 22px 0 60px; color: var(--muted); }
+
+    /* ====== Utils ====== */
+    .row-flex{ display:flex; align-items:center; gap: 10px; flex-wrap: wrap; }
+    .center{ text-align:center; }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid.skills{ grid-template-columns: repeat(2, 1fr); }
+      .grid.projects{ grid-template-columns: 1fr 1fr; }
+      .contact-card{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px){
+      .grid.projects{ grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-  <h1>À propos</h1>
-  <p>Voici ma page à propos.</p>
-  <a href="index.html">Retour à l’accueil</a>
+  <!-- ====== Header / Nav ====== -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo" aria-label="Accueil">
+        <span class="logo-mark">SIO</span>
+        <span>Portfolio • 2ᵉ année</span>
+      </a>
+      <nav class="menu" aria-label="Navigation principale">
+        <a href="#projets">Projets</a>
+        <a href="#competences">Compétences</a>
+        <a href="#parcours">Parcours</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="#cv" onclick="document.getElementById('cv-link').click(); return false;">📄 CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ====== Hero ====== -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="chip">BTS SIO • 2ᵉ année • Option SLAM/SISR</span>
+        <h1>
+          Bonjour, moi c'est <strong>Maxime</strong> 👋<br />
+          <span style="background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;">je crée des applis & systèmes fiables</span>
+        </h1>
+        <p class="lead">
+          Étudiant en <strong>BTS SIO</strong>, je conçois des applications web modernes et j'automatise des déploiements
+          avec une approche axée sur la qualité, la sécurité et l'expérience utilisateur.
+        </p>
+        <div class="cta">
+          <a class="btn" href="#projets">Voir mes projets</a>
+          <a class="btn ghost" href="#contact">Me contacter</a>
+        </div>
+        <div class="row" style="margin-top:16px">
+          <div class="dot" aria-hidden="true"></div>
+          <div>Disponible pour <strong>alternance / stage</strong> et missions freelance.</div>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Carte infos rapides">
+        <div class="rows">
+          <div class="row"><span>📍</span><span><strong>Basé en France</strong> — ouvert au full-remote</span></div>
+          <div class="row"><span>🛠️</span><span>Stack type: HTML/CSS/JS, PHP/Laravel, MySQL, Docker, Linux</span></div>
+          <div class="row"><span>🏫</span><span><strong>BTS SIO</strong> – 2ᵉ année (SLAM/SISR)</span></div>
+          <div class="row"><span>✅</span><span>Objectif: passerelle vers alternance en développement / DevOps</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ====== Compétences ====== -->
+  <section id="competences">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Compétences</div>
+          <div class="h2">Ce que je maîtrise</div>
+        </div>
+        <p class="sub">Un aperçu rapide de mes compétences techniques principales pour le BTS SIO (SLAM/SISR).</p>
+      </div>
+
+      <div class="grid skills">
+        <div class="card">
+          <div class="pill">Front-end</div>
+          <h3>HTML • CSS • JS</h3>
+          <p class="sub">Accessibilité, responsive, animations, bonnes pratiques SEO.</p>
+        </div>
+        <div class="card">
+          <div class="pill">Back-end</div>
+          <h3>PHP • Laravel • Node</h3>
+          <p class="sub">APIs REST, MVC, auth, tests, sécurité de base.</p>
+        </div>
+        <div class="card">
+          <div class="pill">Base de données</div>
+          <h3>MySQL • SQL</h3>
+          <p class="sub">Modélisation, requêtes optimisées, index, migrations.</p>
+        </div>
+        <div class="card">
+          <div class="pill">Système & Réseau</div>
+          <h3>Linux • Docker</h3>
+          <p class="sub">Conteneurisation, CI/CD, Nginx, monitoring basique.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Projets ====== -->
+  <section id="projets">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Projets</div>
+          <div class="h2">Sélection de réalisations</div>
+        </div>
+        <p class="sub">Quelques projets représentatifs. Remplace les vignettes et liens par tes propres travaux.</p>
+      </div>
+
+      <div class="grid projects">
+        <article class="card">
+          <div class="thumb">Projet Laravel</div>
+          <div class="project-title">Gestionnaire de tâches – Laravel</div>
+          <div class="project-meta">CRUD, Auth, rôles, tests • <a href="#">Voir</a></div>
+        </article>
+        <article class="card">
+          <div class="thumb">Dashboard Docker</div>
+          <div class="project-title">Stack Docker + Nginx + CI</div>
+          <div class="project-meta">Compose, multi-stage build • <a href="#">Voir</a></div>
+        </article>
+        <article class="card">
+          <div class="thumb">App JS</div>
+          <div class="project-title">SPA vanilla JS</div>
+          <div class="project-meta">Router léger, state, fetch • <a href="#">Voir</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Parcours / Timeline ====== -->
+  <section id="parcours">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Parcours</div>
+          <div class="h2">Études & expériences</div>
+        </div>
+        <p class="sub">Ton chemin académique et tes expériences clés liées au BTS SIO.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="step">
+          <div class="bullet" aria-hidden="true"></div>
+          <h3>2025 — BTS SIO, 2ᵉ année</h3>
+          <p class="sub">Option SLAM/SISR, projets scolaires, veille technologique, préparation aux oraux.</p>
+        </div>
+        <div class="step">
+          <div class="bullet" aria-hidden="true"></div>
+          <h3>2024 — Stage 1ᵉʳ année</h3>
+          <p class="sub">Mise en place d'une application interne et documentation utilisateur.</p>
+        </div>
+        <div class="step">
+          <div class="bullet" aria-hidden="true"></div>
+          <h3>2023 — Bac / Réorientation</h3>
+          <p class="sub">Découverte des métiers du numérique, premiers projets personnels.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Contact ====== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Contact</div>
+          <div class="h2">Discutons de votre besoin</div>
+        </div>
+        <p class="sub">Un projet, une alternance, une question ? Écrivez‑moi directement.</p>
+      </div>
+
+      <div class="card contact-card">
+        <form onsubmit="event.preventDefault(); alert('Merci ! Le formulaire est démo. Remplacez par un service réel (Formspree, backend perso).');">
+          <div class="row-flex">
+            <input class="input" type="text" name="nom" placeholder="Votre nom" required />
+            <input class="input" type="email" name="email" placeholder="Votre email" required />
+          </div>
+          <textarea class="input" name="message" placeholder="Votre message" required></textarea>
+          <div class="row-flex">
+            <button class="btn" type="submit">Envoyer ✉️</button>
+            <a id="cv-link" class="btn ghost" href="cv.pdf" download> Télécharger mon CV </a>
+          </div>
+        </form>
+        <div>
+          <div class="card" style="height:100%">
+            <h3 style="margin-top:0">Infos</h3>
+            <p class="sub">Email: <a href="mailto:prenom.nom@email.com">prenom.nom@email.com</a><br>
+              GitHub: <a href="#">github.com/monprofil</a><br>
+              LinkedIn: <a href="#">linkedin.com/in/monprofil</a></p>
+            <p class="sub">Je réponds sous 24–48h.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container row-flex" style="justify-content: space-between;">
+      <span>© <span id="year"></span> • Portfolio BTS SIO</span>
+      <span class="sub">Construit en HTML/CSS pur • Thème néon doux</span>
+    </div>
+  </footer>
+
+  <script>
+    // Petites améliorations d'UX sans dépendances
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll doux pour les ancres
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({ behavior:'smooth', block:'start' }); }
+      });
+    });
+  </script>
 </body>
 </html>
