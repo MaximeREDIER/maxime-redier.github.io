@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio – BTS SIO 2ᵉ année</title>
-  <meta name="description" content="Portfolio de BTS SIO – Accueil, projets, compétences et contact." />
+  <meta name="description" content="Portfolio de BTS SIO de Maxime REDIER" />
   <style>
     :root{
       --bg: #0b0e14;
@@ -30,8 +30,16 @@
     }
     a{ color: var(--text); text-decoration: none; }
     .container{ width: min(1100px, 92%); margin: 0 auto; }
-    header{ position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg-soft) 50%, transparent); border-bottom: 1px solid rgba(255,255,255,.06); }
-    .nav{ display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  background: color-mix(in oklab, var(--bg-soft) 50%, transparent);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}    .nav{ display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
     .logo{ display: inline-flex; align-items: center; gap: 10px; font-weight: 700; }
     .logo-mark{ width: 34px; height: 34px; border-radius: 12px; background: var(--grad); display: grid; place-items: center; box-shadow: var(--shadow); font-weight: 800; }
     .menu{ display: flex; gap: 18px; align-items: center; }
@@ -68,10 +76,9 @@
     <div class="container nav">
       <a href="#" class="logo"><span class="logo-mark">SIO</span><span>Portfolio • 2ᵉ année</span></a>
       <nav class="menu">
+        <a href="#presentation">Présentation</a>
         <a href="#competences">Compétences</a>
-        <a href="#parcours">Parcours</a>
         <a href="#contact">Contact</a>
-        <a class="btn" href="#cv" onclick="document.getElementById('cv-link').click(); return false;">📄 CV</a>
       </nav>
     </div>
   </header>
@@ -81,20 +88,58 @@
       <div>
         <span class="chip">BTS SIO • 2ᵉ année • Option SLAM/SISR</span>
         <h1>Bonjour, moi c'est <strong>Maxime</strong> 👋<br /><span style="background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;"></span></h1>
-        <p class="lead">Étudiant en <strong>BTS SIO</strong>, j'étudie différents l'informatique et plus particulièrement le millieu du développement informatique.</p>
+        <p class="lead">Étudiant en <strong>BTS SIO</strong>, ceci est mon portfolio pour l'épreuve de BTS SIO.</p>
         <div class="cta">
-          <a class="btn" href="#competences">Voir mes compétences</a>
-          <a class="btn ghost" href="#contact">Me contacter</a>
+          <a class="btn" href="#presentation">En apprendre plus sur moi</a>
         </div>
       </div>
+      <!--
       <aside class="hero-card">
         <div class="rows">
-          <div class="row"><span>📍</span><span><strong>Basé en France</strong> — ouvert au full-remote</span></div>
-          <div class="row"><span>🛠️</span><span>Stack: HTML/CSS/JS, PHP/Laravel, MySQL, Docker, Linux</span></div>
+          <div class="row"><span>📍</span><span><strong>Basé sur Lyon</strong> — étudiant aux Chartreux</span></div>
+          <div class="row"><span>🛠️</span><span>Technos: </span></div>
           <div class="row"><span>🏫</span><span><strong>BTS SIO</strong> – 2ᵉ année (SLAM/SISR)</span></div>
-          <div class="row"><span>✅</span><span>Objectif: alternance en développement / DevOps</span></div>
         </div>
       </aside>
+      -->
+    </div>
+  </section>
+
+  <!-- ====== Présentation ====== -->
+  <section id="presentation">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="kicker">À propos de moi</div>
+          <div class="h2">Présentation</div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center;">
+        <div>
+          <p>
+            Je m'appelle <strong>Maxime</strong>, étudiant en <strong>BTS SIO</strong> option SLAM. 
+            Passionné par le développement et les technologies, j’aime concevoir des projets qui 
+            allient logique, créativité et rigueur.
+          </p>
+          <p>
+            J'ai obtenu un bac technologique STI2D option SIN en 2022, ce qui m'a permis d'acquérir des bases solides en informatique et en systèmes numériques.
+            J'ai ensuite choisi de poursuivre mes études en BTS SIO au sein de l'institution des Chartreux à Lyon, j'y suis actuellement en deuxième année et ai pour ambition de poursuivre mes études en cycle ingénieur Cybersécurité ICS à CPE Lyon.
+            Ayant l'opportunité de faire un stage de 8 semaines en entreprise, je suis à la recherche d'une opportunité dans le domaine du développement web ou logiciel de février à avril. 
+          </p>
+          <p>
+          </p>
+        </div>
+        <div style="text-align:center;">
+<img src="C:\Users\maxim\Documents\Images\Photo Restaurant.jpg" 
+     alt="Photo de Maxime" 
+     style="width:250px; height:250px; border-radius:50%; object-fit:cover; box-shadow: var(--shadow);" />
+        </div>
+      </div>
+            <div style="margin-top: 28px; text-align: center;">
+        <a class="btn" href="cv.pdf" download>📄 Télécharger mon CV</a>
+      </div>
+
     </div>
   </section>
 
@@ -147,7 +192,47 @@
   </section>
 
   <section id="parcours">
+  <!-- ====== Contact ====== -->
+  <section id="contact">
     <div class="container">
       <div class="section-head">
         <div>
-          <div class="kicker">Par
+          <div class="kicker">Contact</div>
+          <div class="h2">Me contacter</div>
+        </div>
+        <p class="sub">N’hésitez pas à m’écrire pour toute question, opportunité ou échange.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 36px;">
+        <div>
+          <p><strong>📧 Email :</strong> maxime.redier@gmail.com</p>
+          <p><strong>📞 Téléphone :</strong> +33 6 95 02 59 89</p>
+          <p><strong>💼 LinkedIn :</strong> <a href="https://www.linkedin.com/in/maxime-redier" target="_blank">linkedin.com/in/maxime-redier</a></p>
+        </div>
+
+        <!-- Formulaire fonctionnel (sans champ email inutile) -->
+        <form action="mailto:maxime.redier@gmail.com" method="post" enctype="text/plain" style="display: grid; gap: 14px;">
+          <input type="text" name="Nom" placeholder="Votre nom" required 
+                 style="padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.05); color:var(--text);" />
+          <textarea name="Message" placeholder="Votre message" rows="4" required
+                 style="padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.05); color:var(--text);"></textarea>
+          <button type="submit" class="btn">📩 Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Footer ====== -->
+  <footer>
+    <div class="container row-flex" style="justify-content: space-between;">
+      <span>© 2025 Maxime Redier – Portfolio BTS SIO</span>
+      <span>Développé avec ❤️ en HTML & CSS</span>
+    </div>
+  </footer>
+</body>
+</html>
+
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="kicker">
