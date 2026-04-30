@@ -176,6 +176,40 @@
     @media (max-width: 900px){
       .hero-grid{ grid-template-columns: 1fr; }
     }
+
+    /* Proof buttons */
+    .proof-cell { text-align: center; vertical-align: middle; }
+    .proof-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--grad);
+      color: white;
+      box-shadow: 0 2px 10px rgba(91,140,255,.3);
+      transition: opacity .2s, transform .15s;
+      white-space: nowrap;
+    }
+    a.proof-btn:hover { opacity: .85; transform: translateY(-1px); color: white; }
+    .proof-na {
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      box-shadow: none;
+      cursor: default;
+    }
+    .comp-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      background: rgba(91,140,255,.12);
+      border: 1px solid rgba(91,140,255,.2);
+      color: var(--brand);
+    }
+    .preuves-table td { vertical-align: middle; }
   </style>
 </head>
 <body>
@@ -221,7 +255,7 @@
           </p>
           <p>
             J'ai obtenu un bac technologique STI2D option SIN en 2022, ce qui m'a permis d'acquérir des bases solides en informatique et en systèmes numériques.
-            <br>J'ai ensuite choisi de poursuivre mes études en BTS SIO au sein de l'institution des Chartreux à Lyon, pour poursuivre mes études en cycle ingénieur Cybersécurité ICS à CPE Lyon.
+            <br>J'ai ensuite choisi de poursuivre mes études en BTS SIO à l'institution des Chartreux à Lyon, pour poursuivre mes études en cycle ingénieur Cybersécurité ICS à CPE Lyon.
           </p>
         </div>
         <div style="text-align:center;">
@@ -401,6 +435,87 @@
               <td class="check-empty"></td>
               <td class="check-empty"></td>
               <td class="check-empty"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Preuves ====== -->
+  <section id="preuves">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Documents</div>
+          <div class="h2">Preuves des compétences</div>
+        </div>
+        <p class="sub">Accès direct aux documents justificatifs pour chaque réalisation.</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="comp-table preuves-table">
+          <thead>
+            <tr>
+              <th class="th-main" style="text-align:left; width:300px;">Réalisation</th>
+              <th class="th-main" style="width:110px;">Période</th>
+              <th class="th-main">Compétence(s)</th>
+              <th class="th-main" style="width:180px;">Preuve</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="section-row">
+              <td colspan="4">📚 Réalisations en cours de formation</td>
+            </tr>
+            <tr class="data-row">
+              <td class="realisation-name">TP SEO SIO1</td>
+              <td class="periode">01/03/25 → 20/03/25</td>
+              <td><span class="comp-tag">Développer la présence en ligne</span></td>
+              <td class="proof-cell"><a href="Développer la présence en ligne de l'organisation.pdf" target="_blank" class="proof-btn">📄 Voir document</a></td>
+            </tr>
+
+            <tr class="section-row">
+              <td colspan="4">🏢 Réalisations en milieu professionnel – Première année</td>
+            </tr>
+            <tr class="data-row">
+              <td class="realisation-name">Stage ABB : Campagne de test NaveoPro</td>
+              <td class="periode">02/06/25 → 30/06/25</td>
+              <td><span class="comp-tag">Travailler en mode projet</span></td>
+              <td class="proof-cell"><a href="Travailler en mode projet.pdf" target="_blank" class="proof-btn">📄 Voir document</a></td>
+            </tr>
+            <tr class="data-row">
+              <td class="realisation-name">Stage ABB : Conception système d'envoi de QR codes par mail</td>
+              <td class="periode">02/06/25 → 30/06/25</td>
+              <td><span class="comp-tag">Mettre à disposition un service</span></td>
+              <td class="proof-cell"><a href="Mettre à disposition des utilisateurs un service informatique.pdf" target="_blank" class="proof-btn">📄 Voir document</a></td>
+            </tr>
+            <tr class="data-row">
+              <td class="realisation-name">Développement du réseau LinkedIn à l'issue du stage SIO1</td>
+              <td class="periode">02/06/25 → 30/06/25</td>
+              <td><span class="comp-tag">Organiser son développement professionnel</span></td>
+              <td class="proof-cell"><a href="Organiser son développement professionnel.pdf" target="_blank" class="proof-btn">📄 Voir document</a></td>
+            </tr>
+
+            <tr class="section-row">
+              <td colspan="4">🏢 Réalisations en milieu professionnel – Seconde année</td>
+            </tr>
+            <tr class="data-row">
+              <td class="realisation-name">Stage SIO2 : Mise en place d'une stratégie de sauvegarde automatique</td>
+              <td class="periode">16/02/26 → 10/04/26</td>
+              <td><span class="comp-tag">Gérer le patrimoine informatique</span></td>
+              <td class="proof-cell"><span class="proof-btn proof-na">🔒 Non disponible</span></td>
+            </tr>
+            <tr class="data-row">
+              <td class="realisation-name">Stage SIO2 : Conception outil de gestion MDM</td>
+              <td class="periode">16/02/26 → 10/04/26</td>
+              <td><span class="comp-tag">Mettre à disposition un service</span></td>
+              <td class="proof-cell"><span class="proof-btn proof-na">🔒 Non disponible</span></td>
+            </tr>
+            <tr class="data-row">
+              <td class="realisation-name">Stage SIO2 : Correctifs Google Script Ecorepair</td>
+              <td class="periode">16/02/26 → 10/04/26</td>
+              <td><span class="comp-tag">Répondre aux incidents et demandes</span></td>
+              <td class="proof-cell"><span class="proof-btn proof-na">🔒 Non disponible</span></td>
             </tr>
           </tbody>
         </table>
